@@ -9,7 +9,9 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "sequelize": "^6.16.2",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {},
   "description": ""
