@@ -4,18 +4,20 @@ const app = express();
 const port = 8080;
 const models = require("./models");
 const multer = require("multer");
-const upload = multer({
+const uploads = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, "upload/");
+      cb(null, "uploads/");
     },
     filename: function (req, file, cb) {
-      cd(null, file.originalname);
+      cb(null, file.originalname);
     },
   }),
 });
 app.use(express.json());
 app.use(cors());
+app.use("/uploads", express.static("uploads"));
+
 app.get("/products", (req, res) => {
   models.Product.findAll({
     //limit : 1,
@@ -34,7 +36,7 @@ app.get("/products", (req, res) => {
     });
 });
 
-app.post("/image", upload.single("image"), (req, res) => {
+app.post("/image", uploads.single("image"), (req, res) => {
   const file = req.file;
   console.log("file : ", file);
   res.send({
