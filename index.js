@@ -30,7 +30,7 @@ app.get("/banners", (req, res) => {
     })
     .catch((error) => {
       console.error(error);
-      res.status(500).send("에러가 발생했습니다");
+      res.status(500).send("에러가 발생했습니다.");
     });
 });
 
